@@ -139,7 +139,7 @@ public class BookController extends HttpServlet {
             BookService service = new BookServiceImpl();
             List<BookIssued> list = service.getAllIssuedBookList();
 
-            if (list != null && list.size() > 0) {
+            if (list != null && !list.isEmpty()) {
                 LocalDate today = LocalDate.now();
 
                 for (BookIssued b : list) {

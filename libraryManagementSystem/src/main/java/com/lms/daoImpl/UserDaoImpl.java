@@ -1,5 +1,8 @@
 package com.lms.daoImpl;
 
+import com.lms.dao.UserDao;
+import com.lms.pojo.User;
+import com.lms.util.DbUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -7,10 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.lms.dao.UserDao;
-import com.lms.pojo.User;
-import com.lms.util.DbUtil;
 
 public class UserDaoImpl implements UserDao
 {
@@ -37,6 +36,7 @@ public class UserDaoImpl implements UserDao
 				user.setEmail(rs.getString("email"));
 				user.setAddress(rs.getString("address"));
 				user.setPhoneNo(rs.getString("phone_no"));
+				user.setRole(rs.getString("role"));
 				
 				return user;
 			}

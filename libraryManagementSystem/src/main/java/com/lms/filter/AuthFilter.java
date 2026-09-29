@@ -1,5 +1,7 @@
 package com.lms.filter;
+
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
@@ -12,31 +14,60 @@ import javax.servlet.http.HttpSession;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter {
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        
+
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+
         String url = httpServletRequest.getRequestURI();
+
         HttpSession session = httpServletRequest.getSession();
-        
-        boolean loggedIn = (session != null && session.getAttribute("user") != null);
-        boolean allowedUrl = url.equals(httpServletRequest.getContextPath() + "/") ||
-                url.equals(httpServletRequest.getContextPath() + "/AuthenticationController");
-        
-        // ✅ Static files bypass
-        boolean isStaticFile = url.contains("/assets/") || 
-                               url.endsWith(".css") || 
-                               url.endsWith(".js") || 
-                               url.endsWith(".png") || 
-                               url.endsWith(".jpg") || 
-                               url.endsWith(".ico");
-        
-        if(loggedIn || allowedUrl || isStaticFile) {
+
+        // Check whether user is logged in
+        boolean loggedIn =
+                session != null && session.getAttribute("user") != null;
+
+        // URLs that anyone can access
+        boolean allowedUrl =
+                url.equals(httpServletRequest.getContextPath() + "/")
+                || url.equals(
+                        httpServletRequest.getContextPath()
+                        + "/AuthenticationController");
+
+        // Get action parameter
+        String action = httpServletRequest.getParameter("action");
+
+        // Add Admin is accessible without login
+        boolean publicAddAdmin =
+                url.equals(
+                        httpServletRequest.getContextPath()
+                        + "/UserController")
+                && ("showAddAdmin".equalsIgnoreCase(action)
+                    || "addAdmin".equalsIgnoreCase(action));
+
+        // Static files should always be accessible
+        boolean isStaticFile =
+                url.contains("/assets/")
+                || url.endsWith(".css")
+                || url.endsWith(".js")
+                || url.endsWith(".png")
+                || url.endsWith(".jpg")
+                || url.endsWith(".jpeg")
+                || url.endsWith(".ico");
+
+        // Allow request
+        if (loggedIn || allowedUrl || publicAddAdmin || isStaticFile) {
+
             chain.doFilter(request, response);
-        }
-        else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/login.jsp");
+
+        } else {
+
+            // User is not logged in → send to login page
+            RequestDispatcher dispatcher =
+                    request.getRequestDispatcher("jsp/login.jsp");
+
             dispatcher.forward(request, response);
         }
     }

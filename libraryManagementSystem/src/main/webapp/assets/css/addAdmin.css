@@ -1,0 +1,453 @@
+/* =====================================================
+   ADD ADMIN PAGE
+   Separate CSS - does NOT affect Login
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+
+/* =====================================================
+   PAGE
+   ===================================================== */
+
+body.add-admin-page {
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 25px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    font-family: 'Inter', sans-serif;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(24, 10, 55, 0.45),
+            rgba(24, 10, 55, 0.08)
+        ),
+        url("../images/library-login-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+}
+
+
+/* =====================================================
+   DARK OVERLAY
+   ===================================================== */
+
+body.add-admin-page::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(25, 8, 55, 0.35) 0%,
+            rgba(25, 8, 55, 0.08) 55%,
+            rgba(10, 5, 25, 0.02) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.add-admin-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 390px;
+
+    margin-left: 4vw;
+}
+
+
+/* =====================================================
+   CARD
+   ===================================================== */
+
+.add-admin-card {
+
+    width: 100%;
+
+    padding: 24px 26px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(40, 18, 85, 0.82),
+            rgba(24, 10, 55, 0.68)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.38),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+    color: white;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.add-admin-header {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   ICON
+   ===================================================== */
+
+.add-admin-icon {
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.95),
+            rgba(236, 72, 153, 0.9)
+        );
+
+    box-shadow:
+        0 10px 30px rgba(124, 58, 237, 0.35);
+}
+
+
+.add-admin-icon i {
+
+    color: white;
+
+    font-size: 27px;
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.add-admin-title {
+
+    margin: 0 0 5px;
+
+    color: white;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 1.75rem;
+
+    font-weight: 600;
+
+    letter-spacing: -0.4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d8b4fe,
+            #f9a8d4
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+
+/* =====================================================
+   SUBTITLE
+   ===================================================== */
+
+.add-admin-subtitle {
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 0.84rem;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.add-admin-form-group {
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   INPUT
+   ===================================================== */
+
+.add-admin-input {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    color: white;
+
+    font-size: 0.9rem;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+
+.add-admin-input::placeholder {
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+.add-admin-input:focus {
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    border-color: #a78bfa;
+
+    box-shadow:
+        0 0 0 3px rgba(139, 92, 246, 0.18),
+        0 0 20px rgba(139, 92, 246, 0.12);
+}
+
+
+/* =====================================================
+   CREATE BUTTON
+   ===================================================== */
+
+.add-admin-button {
+
+    width: 100%;
+
+    height: 48px;
+
+    margin-top: 3px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: white;
+
+    font-size: 0.92rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            100deg,
+            #6366f1,
+            #8b5cf6,
+            #ec4899
+        );
+
+    box-shadow:
+        0 10px 25px rgba(124, 58, 237, 0.32);
+
+    transition: all 0.3s ease;
+}
+
+
+.add-admin-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(139, 92, 246, 0.42);
+}
+
+
+/* =====================================================
+   BACK TO LOGIN
+   ===================================================== */
+
+.add-admin-back {
+
+    display: block;
+
+    width: 100%;
+
+    height: 43px;
+
+    line-height: 43px;
+
+    margin-top: 12px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 0.88rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    transition: all 0.3s ease;
+}
+
+
+.add-admin-back:hover {
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border-color: rgba(255, 255, 255, 0.45);
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   ERROR
+   ===================================================== */
+
+.add-admin-error {
+
+    margin-bottom: 14px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    background: rgba(239, 68, 68, 0.15);
+
+    border: 1px solid rgba(239, 68, 68, 0.25);
+
+    color: #fecaca;
+
+    font-size: 0.85rem;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .add-admin-container {
+
+        max-width: 390px;
+
+        margin-left: 20px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    body.add-admin-page {
+
+        padding: 15px;
+
+        background-position: 65% center;
+
+        background-attachment: scroll;
+    }
+
+    .add-admin-container {
+
+        max-width: 100%;
+
+        margin: 0;
+    }
+
+    .add-admin-card {
+
+        padding: 22px 18px;
+    }
+
+    .add-admin-title {
+
+        font-size: 1.55rem;
+    }
+
+    .add-admin-input {
+
+        height: 46px;
+    }
+
+    .add-admin-button {
+
+        height: 46px;
+    }
+}

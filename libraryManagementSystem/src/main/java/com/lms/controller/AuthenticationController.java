@@ -44,6 +44,7 @@ public class AuthenticationController extends HttpServlet {
 			if(user != null) {
 				HttpSession session =  request.getSession();
 				session.setAttribute("user", user);
+				session.setAttribute("role", user.getRole());
 				response.sendRedirect("DashboardController?action=viewDashboard");
 			}
 			else {

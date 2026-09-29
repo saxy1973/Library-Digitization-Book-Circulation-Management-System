@@ -48,7 +48,7 @@ public class DashboardController extends HttpServlet {
 			BookService bookService = new BookServiceImpl();
 			List<BookIssued> issuedList = bookService.getIssuedBookListForDashboard();
 			
-			if(issuedList != null && issuedList.size() > 0) {
+			if(issuedList != null && !issuedList.isEmpty()) {
 				LocalDate today = LocalDate.now();
 				
 				for (BookIssued bookIssued : issuedList) {

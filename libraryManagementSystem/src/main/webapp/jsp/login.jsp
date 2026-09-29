@@ -53,6 +53,13 @@
                 <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
             </button>
 
+						<div class="add-admin-link">
+    <a href="${pageContext.request.contextPath}/UserController?action=showAddAdmin">
+        <i class="bi bi-person-plus-fill me-1"></i>
+        Add Admin
+    </a>
+</div>
+
         </form>
     </div>
 </div>
