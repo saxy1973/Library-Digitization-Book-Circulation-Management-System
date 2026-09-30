@@ -2,18 +2,18 @@ FROM tomcat:9.0-jdk17-temurin
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy web files
 COPY src/main/webapp /usr/local/tomcat/webapps/ROOT
 
-# Copy Java source
 COPY src/main/java /tmp/src/main/java
 
-# Compile Java source inside Docker
 RUN mkdir -p /usr/local/tomcat/webapps/ROOT/WEB-INF/classes && \
     javac -cp "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*" \
     -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes \
     $(find /tmp/src/main/java -name "*.java")
 
-EXPOSE 8080
+# Disable Tomcat shutdown port and use Render's PORT
+CMD sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml && \
+    sed -i "s/port=\"8080\"/port=\"${PORT:-10000}\"/" /usr/local/tomcat/conf/server.xml && \
+    catalina.sh run
 
-CMD ["catalina.sh", "run"]
+EXPOSE 10000
