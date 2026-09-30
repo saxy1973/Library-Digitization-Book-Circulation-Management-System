@@ -13,6 +13,7 @@ RUN mkdir -p /usr/local/tomcat/webapps/ROOT/WEB-INF/classes && \
 
 CMD sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml && \
     sed -i "s/port=\"8080\"/port=\"${PORT:-10000}\"/" /usr/local/tomcat/conf/server.xml && \
+    export JAVA_OPTS="$JAVA_OPTS -Djava.net.preferIPv4Stack=true" && \
     catalina.sh run
 
 EXPOSE 10000
